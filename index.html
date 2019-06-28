@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stock Keeper</title>
+    <style type="text/css">
+    body{
+        background-color: rgb(7, 44, 39);
+    }
+    .input1{
+        margin-left:50px;
+        height:400px;
+        width: 1150px;
+        background-color: rgb(154, 219, 197);
+    }
+    .main_header{
+        text-align: center;
+        color: wheat;
+    }
+    .input_box{
+        margin-top: 10px;
+        margin-left: 200px;
+    }
+    .red{
+        color:red;
+    }
+    .green{
+        color:green;
+    }
+    .orange{
+        color:orange;
+    }
+    .bal{
+        float: right;
+        height: 300px;
+        width: 400px;
+        background-color: black;
+        color:white;
+        margin-top: -350px;
+        margin-right: 100px;
+        text-align: center;
+    }
+    .button_style{
+        background-color: black;
+        color: white;
+    }
+    .add{
+        float: right;
+        height: 300px;
+        width: 300px;
+        margin-top: -350px;
+        margin-right:850px;
+        text-align: center;
+
+    }
+    .deduct{
+        float: right;
+        height: 300px;
+        width: 300px;
+        margin-top: -350px;
+        margin-right:550px;
+        text-align: center;
+    }
+
+    
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="main_header">STOCK KEEPER</h1>
+           <!-- <input type="text" name="result" id="result" class="input1">-->
+
+            <div class="input1"></div>
+            <div id="item" class="add"></div>
+            <div  class="deduct" id="ded"></div>
+            <div class="bal">
+                <h3>Balance</h3>
+                <p id="balance"></p>
+            </div>
+    </div>
+
+    <div class="input_box">
+            <select id="select_item">
+                    <option value="Rice">Rice</option>
+                    <option value="Salt">Salt</option>
+                    <option value="Dal">Dal</option>
+                    <option value="Sugar">Sugar</option>
+                
+                    
+                    </select>
+                    <input type="text" name="input" id="input">
+                    <button  onclick="add_item()" class="button_style">ADD ITEM</button>
+
+                    <button  onclick="deduct_item()" class="button_style" >DEDUCT ITEM</button>
+
+                    <select id="deduct_item">
+                        <option value="Rice">Rice</option>
+                        <option value="Salt">Salt</option>
+                        <option value="Dal">Dal</option>
+                        <option value="Sugar">Sugar</option>
+                        </select>
+                        <input type="text" name="deduct" id="deduct">
+
+
+                        <button class="button_style" onclick="check_item()">CHECK BALANCE FOR</button>
+                    <select id="check_item">
+                        <option value="Rice">Rice</option>
+                        <option value="Salt">Salt</option>
+                        <option value="Dal">Dal</option>
+                        <option value="Sugar">Sugar</option>
+                        </select>
+    </div>
+
+    <script>
+      //  var input = parseInt(document.getElementById("input").value);
+           
+       // var select_item = document.getElementById("select_item").value;
+        //var total_balance=Number(document.getElementById("balance").value)
+
+			//document.getElementById("total_balance").value += input;
+        function add_item()
+        {
+            
+              var para = document.createElement('p');
+              para.textContent = ' Add '+ document.getElementById("select_item").value +'......'+
+                                    parseInt(document.getElementById("input").value)+" kg";
+            
+                 var ele = document.querySelector('#item');
+            
+                    ele.appendChild(para);
+
+                    
+            
+        }
+                /*
+                    if(select_item== Rice)
+                    {
+                       // document.getElementById("balance").innerHTML +=parseInt(document.getElementById("input").value;
+                        //for(i=0;i<=select_item.length;i++){
+
+                        //document.getElementById("result").value += input;
+                    }
+                    
+                    else if (select_item== Salt)
+                    {
+                        document.getElementById("result").value += input;
+                    }
+                    else if (select_item== Sugar)
+                    {
+                        document.getElementById("result").value += input;
+                    }
+
+                    
+                    var para = document.querySelectorAll('p');
+                    if(result >40)
+                    {
+                        para.setAttribute('class', 'green')
+                    }
+                    else if(result<40 && result>20)
+                            {
+                        para.setAttribute('class', 'orange')
+                    }
+                    else if(result<20)
+                    {
+                        para.setAttribute('class', 'red')
+                    }
+
+
+                   // para.addEventListener('onmouseover', add_item);
+                    */
+
+        
+        function deduct_item()
+        {
+            
+              var para = document.createElement('p');
+              para.textContent = ' Deduct :'+ document.getElementById("deduct_item").value +'......'+
+                                    parseInt(document.getElementById("deduct").value)+" kg";
+            
+                 var ele = document.querySelector('#ded');
+            
+                    ele.appendChild(para);
+
+        }
+
+        function check_item(){
+
+
+            var input = Number(document.getElementById("input").value);
+            var deduct = Number(document.getElementById("deduct").value);
+           
+           var select_item = document.getElementById("select_item").value;
+           var deduck_item = document.getElementById("deduct_item").value;
+           var check_item  = document.getElementById("check_item").value;
+          
+
+          if(select_item === "Rice" && deduck_item === "Rice" && check_item==="Rice")
+          {
+              
+             document.getElementById("balance").innerHTML ="Available Balance"+ input - deduct;
+
+          }
+          if(select_item === "Salt" && deduck_item === "Salt" && check_item==="Salt")
+          {
+              
+             document.getElementById("balance").value = input - deduct;
+
+          }
+          if(select_item === "Dal" && deduck_item === "Dal" && check_item==="Dal")
+          {
+              
+             document.getElementById("balance").value = input - deduct;
+
+          }
+          if(select_item === "Sugar" && deduck_item === "Sugar" && check_item==="Sugar")
+          {
+              
+             document.getElementById("balance").value = input - deduct;
+
+          }
+            
+          
+          else{
+                document.getElementById("balance").value= 0;
+            }
+
+        }
+           /*var balance = document.getElementById("balance").value;
+            var input = parseInt(document.getElementById("input").value);
+            var select_item = document.getElementById("select_item").value;
+
+            var input = parseInt(document.getElementById("input").value);
+           
+           var check_item = document.getElementById("check_item").value;
+          var result_type = document.getElementById("input_right").value;
+          
+
+          if(check_item === "Rice")
+          {
+             // var sum =0;
+              //for(i=0;i<=select_item.length;i++)
+              //{
+              //    sum += input;
+              //}
+              document.getElementById("score").value+=input;
+             document.getElementById("balance").value = sum;
+
+          }
+          else if(check_item === "Salt")
+          {
+            var sum =0;
+              for(i=0;i<=input;i++)
+              {
+                  sum += i;
+              }
+              
+             document.getElementById("balance").value = sum;
+          }
+          else if(check_item === "Sugar")
+          {
+            var sum =0;
+              for(i=0;i<=input;i++)
+              {
+                  sum += i;
+              }
+              
+             document.getElementById("balance").value = sum;
+          }
+          else if(check_item === "Dal")
+          {
+            var sum =0;
+              for(i=0;i<=input;i++)
+              {
+                  sum += i;
+              }
+              
+             document.getElementById("balance").value = sum;
+          }
+          else
+          {
+              document.getElementById("balance").value = "";
+          }
+        }*/
+
+
+    </script>
+    
+</body>
+</html>
